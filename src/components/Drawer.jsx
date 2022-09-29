@@ -13,9 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import ContactPageIcon from '@mui/icons-material/ContactPage';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import PaidIcon from '@mui/icons-material/Paid';
 import WorkspacesOutlinedIcon from '@mui/icons-material/WorkspacesOutlined';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
@@ -29,9 +27,6 @@ import AddIcon from '@mui/icons-material/Add';
 import SvgIcon from '@mui/material/SvgIcon';
 import Avatar from '@mui/material/Avatar';
 import { ReactComponent as LogoIcon } from '../images/logo.svg';
-
-
-
 
 import {
   Link as RouterLink,
@@ -159,15 +154,15 @@ function ResponsiveDrawer(props) {
       </List>
       <Divider />
       <List>
-        {['LinkedIn', 'GitHub', 'Contact'].map((text, index) => (
+        {['Donate'].map((text, index) => (
           <Link href={index === 0 ?
-            "https://www.linkedin.com/in/nicholasscottdeckard/" : index === 1 ?
+            "https://www.paypal.com/donate/?business=JYWAM9BGJQKP4&no_recurring=0&currency_code=USD" : index === 1 ?
               "https://github.com/zytalus" :
               "mailto:nicholas.deckard@crazymagic.studio"} target="_blank" underline='none' key={text}>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index === 0 ? <LinkedInIcon /> : index === 1 ? <GitHubIcon /> : <ContactPageIcon />}
+                  {index === 0 ? <PaidIcon /> : index === 1 ? <PaidIcon /> : <PaidIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
