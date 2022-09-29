@@ -16,8 +16,8 @@ import Typography from '@mui/material/Typography';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TerminalIcon from '@mui/icons-material/Terminal';
-import ArchitectureIcon from '@mui/icons-material/Architecture';
+import WorkspacesOutlinedIcon from '@mui/icons-material/WorkspacesOutlined';
+import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import Link from '@mui/material/Link';
@@ -25,6 +25,13 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
+import AddIcon from '@mui/icons-material/Add';
+import SvgIcon from '@mui/material/SvgIcon';
+import Avatar from '@mui/material/Avatar';
+import { ReactComponent as LogoIcon } from '../images/logo.svg';
+
+
+
 
 import {
   Link as RouterLink,
@@ -36,6 +43,7 @@ import {
 import Home from '../routes/Home';
 import Architect from '../routes/Architect';
 import Developer from '../routes/Developer';
+import CreateStack from '../routes/CreateStack';
 
 
 const breadcrumbNameMap = {
@@ -43,6 +51,7 @@ const breadcrumbNameMap = {
   '/architect/portfolio': 'Portfolio Project',
   '/developer': 'Software Developer',
   '/developer/portfolio': 'Portfolio Project',
+  '/create-stack': 'Create Stack',
 
 };
 
@@ -52,8 +61,10 @@ function ListItemLink(props) {
 
   let icon = null;
   let expandIcon = null;
-  if (breadcrumbNameMap[to] === 'Solutions Architect') icon = <ArchitectureIcon />
-  if (breadcrumbNameMap[to] === 'Software Developer') icon = <TerminalIcon />
+  if (breadcrumbNameMap[to] === 'Solutions Architect') icon = <WorkspacesIcon />
+  if (breadcrumbNameMap[to] === 'Software Developer') icon = <WorkspacesOutlinedIcon />
+  if (breadcrumbNameMap[to] === 'Create Stack') icon = <AddIcon />
+
   if (expand != null) {
     expandIcon = expand ? <ExpandLess /> : <ExpandMore />;
   }
@@ -80,8 +91,10 @@ const Page = () => {
   return (
     <Breadcrumbs aria-label="breadcrumb">
       <LinkRouter underline="hover" color="inherit" to="/">
-        Home
-      </LinkRouter>
+      <Avatar sx={{bgcolor:"#4527a0"}}>
+
+      <SvgIcon sx={{fontSize: 32}} component={LogoIcon} inheritViewBox />   </Avatar>
+        </LinkRouter>
       {pathnames.map((value, index) => {
         const last = index === pathnames.length - 1;
         const to = `/${pathnames.slice(0, index + 1).join('/')}`;
@@ -126,7 +139,7 @@ function ResponsiveDrawer(props) {
     <div>
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
-          Nicholas Deckard
+          Crazy Magic Manager
         </Typography>
       </Toolbar>
       <Divider />
@@ -160,7 +173,6 @@ function ResponsiveDrawer(props) {
               </ListItemButton>
             </ListItem>
           </Link>
-
         ))}
       </List>
     </div>
@@ -236,12 +248,11 @@ function ResponsiveDrawer(props) {
           <Route path="/" element={<Home />} />
           <Route path="/architect" element={<Architect />} />
           <Route path="/developer" element={<Developer />} />
-
+          <Route path="/create-stack" element={<CreateStack />} />
           <Route path="*" element={<>Page Under Construction!</>} />
         </Routes>
 
       </Box>
-
     </Box>
   );
 }
